@@ -4,13 +4,79 @@
 <title>HangmanProgram</title>
 
 
+
+</head>
+
+<body>
+
+
+	<div id="game";>
+	<br>
+<center>Hangman 90's Videogame Edition</center>
+<br>
+<center>Can you remeber your childhood charachters?</center>
+
+	</div>
+	<div id="game2";>
+	<br>
+<center>Press any key to start</center>
+
+	</div>
+
+
+
+
+
+
+<style>
+body {
+	font-size: 24px;
+	line-height: 32px;
+	background-image: url("http://img12.deviantart.net/3808/i/2015/122/d/7/old_school_video_games_by_dancingcorpse1000-d2er7ky.jpg");
+	background-size:cover;
+	background-repeat: no-repeat;
+    border: transparent;
+}
+	#game{
+		background-image: url(https://farm3.staticflickr.com/2779/4030158041_bcf39106ce_o_d.jpg);
+	background-size:auto;
+		float: right;
+	margin-right: 250px;
+		width: 57%;
+		padding-left: 20px;
+		border-style: groove;
+	border-bottom: transparent;
+		font-family: 'gill sans';
+		color: white;
+		border-color: brown;
+	}
+	#game2{
+	font-family: 'gill sans';
+	background-image: url(https://farm3.staticflickr.com/2779/4030158041_bcf39106ce_o_d.jpg);
+	background-size:auto;
+	border-style: groove;
+	border-top: transparent;
+	float: right;
+	margin-right: 250px;
+	width: 57%;
+	height: 600px;
+	padding-top: 0px;
+	padding-left: 20px;
+	color: white;
+	border-color: brown;
+	}
+
+
+</style>
+
 <script language="javascript" type="text/javascript">
-var words = ["pacman", "mario", "luigi", "crash","sonic","cloud","solid snake","star_fox", "ms._pacman", "donkey_kong","link","lara_croft","samus","dig_dug"];
+var words = ["pikachu", "mario", "luigi", "crash","sonic","cloud","snake","starfox","donkeykong","link","laracroft","samus","yoshi", "parappa","spyro","megaman","subzero","ryu","guile"];
 var random = words[Math.floor(Math.random() * words.length)];
 var splitWord = random.split('');
 var cLetters = [];
 var wLetters = [];
-var chances = 6;
+var wins = 0;
+var chances = 8;
 document.onkeyup = function(event) {
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 	//debugger;
@@ -19,7 +85,7 @@ document.onkeyup = function(event) {
 	//if (chances>0) {
 
 if (chances==0) {
-			alert("you done goofed")
+			alert("you lose")
 		};
 	if (splitWord.indexOf(userGuess) > -1){
 		if (cLetters.indexOf(userGuess)==-1){
@@ -36,12 +102,18 @@ if (chances==0) {
 
 				}else if (cLetters.length<2) {
 					wordHTML = wordHTML + " _ ";
+				}else if (cLetters.length>=4) {
+					wins++;
+					
+
 				}else{
 					wordHTML = wordHTML;
-				}
+					
+				} 
 			}
 		}
-		document.querySelector('#game').innerHTML = wordHTML;
+		
+
 	}else{
 		if (wLetters.indexOf(userGuess) == -1){
 			wLetters.push(userGuess)
@@ -49,9 +121,16 @@ if (chances==0) {
 		} 		
 	}
 
-	
-
-
+		var uLetters =  cLetters+wLetters;
+		var html = 
+        "<p>Wins: " + 
+        wins + 
+        "</p>" +
+        "<p>Guesses Left " + 
+        chances + 
+        "</p>" + "<p>" + "Used Letters: " + uLetters + "</p>";
+		document.querySelector('#game2').innerHTML = html;
+		document.querySelector('#game').innerHTML = wordHTML;
 		
 	}
 		// for(var i = 0; i < splitWord.length; i++){
@@ -95,82 +174,6 @@ if (chances==0) {
 
 
 </script>
-</head>
 
-<body>
-
-
-	<div id="game">
-
-	</div>
-
-<!--<span id="hangman"><center><H1><strong>Hangman</strong></H1></center></span>
-<span id = "retro">
-<H2><center>Retro Game Edition</center></H2>
-<center><h3>Can you guess your favorite characters?</h3></center>
-</span>
-<br><h3>
-Click Start Game button to begin
-<br>
-<br>
-<br>
-
-Type a letter to guess (no symbols and spaces please!)
-<br>
-<br>
-Then click the guess button
-<br>
-<br>
-Cick reset to begin again
-<br>
-<br>
-
-<Form name = "myform">
-<input type="button" value="Start Game" onclick=><br>
-
-
-<input type="hidden" name="answer" value=""/>
-
-<input type="button" value="Guess" onclick=>
-<input name = "ltr" type="text" size = "24"><br>
-
-<br>The Word is:
-
-<input name = "boxone" type="text" size = "2"id="boxone" >
-<input name = "boxtwo" type="text" size = "2"id="boxtwo" >
-<input name = "boxthree" type="text" size = "2"id="boxthree" >
-<input name = "boxfour" type="text" size = "2"id="boxfour" >
-<input name = "boxfive" type="text" size = "2"id="boxfive" >
-<input name = "boxsix" type="text" size = "2"id="boxsix" >
-<input name = "boxseven" type="text" size = "2"id="boxseven" >
-
-
-<style>
-#hangman {
-	color: blue;
-}
-#retro{
-	color: red;
-}
-
-
-
-	#boxone, #boxtwo, #boxthree, #boxfour ,#boxfive, #boxsix,#boxseven   {
-	border-color: black;
-	border-right:transparent;
-	border-left:transparent;
-	border-top:transparent;
-	border-bottom-bottom: solid 5px;
-}
-</style>
-
-<BR>
-<BR>
-Wrong Letters <input name = "wrongletters" type="text" size = "36">
-<BR>
-<BR>
-<input type="reset" value="Reset">
-</form>
-</head>-->
 </body>
 
