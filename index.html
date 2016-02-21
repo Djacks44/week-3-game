@@ -5,19 +5,22 @@
 
 
 <script language="javascript" type="text/javascript">
-var words = ['mario','luigi','link','wario']; 
+var words = ["pacman", "mario", "luigi", "crash","sonic","cloud","solid snake","star_fox", "ms._pacman", "donkey_kong","link","lara_croft","samus","dig_dug"];
 var random = words[Math.floor(Math.random() * words.length)];
 var splitWord = random.split('');
 var cLetters = [];
 var wLetters = [];
-var chances = 10;
+var chances = 6;
 document.onkeyup = function(event) {
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 	//debugger;
 	//console.log(userGuess)
 	//console.log(chances)
-	// if (chances>0) {
+	//if (chances>0) {
 
+if (chances==0) {
+			alert("you done goofed")
+		};
 	if (splitWord.indexOf(userGuess) > -1){
 		if (cLetters.indexOf(userGuess)==-1){
 			cLetters.push(userGuess)
@@ -25,11 +28,16 @@ document.onkeyup = function(event) {
 		var wordHTML = "";
 
 		for(var i=0; i < splitWord.length; i++){
+			console.log(splitWord.length)
 			for(var j=0; j <cLetters.length; j++){
+				console.log(cLetters.length)
 				if (splitWord[i] == cLetters[j]){
 					wordHTML = wordHTML + " " + cLetters[j] + " ";
-				}else {
+
+				}else if (cLetters.length<2) {
 					wordHTML = wordHTML + " _ ";
+				}else{
+					wordHTML = wordHTML;
 				}
 			}
 		}
@@ -37,7 +45,8 @@ document.onkeyup = function(event) {
 	}else{
 		if (wLetters.indexOf(userGuess) == -1){
 			wLetters.push(userGuess)
-		}
+			chances--;
+		} 		
 	}
 
 	
