@@ -99,13 +99,12 @@ if (chances==0) {
 				console.log(cLetters.length)
 				if (splitWord[i] == cLetters[j]){
 					wordHTML = wordHTML + " " + cLetters[j] + " ";
-
+				}else if (splitWord[i] == userGuess) {
+					wordHTML = wordHTML ;
 				}else if (cLetters.length<2) {
 					wordHTML = wordHTML + " _ ";
 				}else if (cLetters.length>=4) {
 					wins++;
-					
-
 				}else{
 					wordHTML = wordHTML;
 					
