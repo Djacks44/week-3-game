@@ -70,13 +70,15 @@ body {
 </style>
 
 <script language="javascript" type="text/javascript">
-var words = ["pikachu", "mario", "luigi", "crash","sonic","cloud","snake","starfox","donkeykong","link","laracroft","samus","yoshi", "parappa","spyro","megaman","subzero","ryu","guile"];
+var words = ["pikachu"] //, "mario", "luigi", "crash","sonic","cloud","snake","starfox","donkeykong","link","laracroft","samus","yoshi", "parappa","spyro","megaman","subzero","ryu","guile"];
 var random = words[Math.floor(Math.random() * words.length)];
-var splitWord = random.split('');
+var splitWord = random.split("");
 var cLetters = [];
 var wLetters = [];
 var wins = 0;
 var chances = 8;
+var wordHTML = "";
+
 document.onkeyup = function(event) {
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 	//debugger;
@@ -91,24 +93,16 @@ if (chances==0) {
 		if (cLetters.indexOf(userGuess)==-1){
 			cLetters.push(userGuess)
 		}
-		var wordHTML = "";
 
 		for(var i=0; i < splitWord.length; i++){
-			console.log(splitWord.length)
 			for(var j=0; j <cLetters.length; j++){
-				console.log(cLetters.length)
 				if (splitWord[i] == cLetters[j]){
-					wordHTML = wordHTML + " " + cLetters[j] + " ";
-				}else if (splitWord[i] == userGuess) {
-					wordHTML = wordHTML ;
-				}else if (cLetters.length<2) {
+					wordHTML = wordHTML + "" + cLetters[j] + "";
+					console.log(wordHTML);
+				}else {
 					wordHTML = wordHTML + " _ ";
-				}else if (cLetters.length>=4) {
-					wins++;
-				}else{
-					wordHTML = wordHTML;
-					
-				} 
+					console.log(wordHTML);
+				}
 			}
 		}
 		
