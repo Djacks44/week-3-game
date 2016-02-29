@@ -4,6 +4,7 @@
 <title>HangmanProgram</title>
 
 
+<<<<<<< HEAD
 <script language="javascript" type="text/javascript">
 var words = ['mario','luigi','link','wario']; 
 var random = words[Math.floor(Math.random() * words.length)];
@@ -11,22 +12,111 @@ var splitWord = random.split('');
 var cLetters = [];
 var wLetters = [];
 var chances = 10;
+=======
+
+</head>
+
+<body>
+
+
+	<div id="game";>
+	<br>
+<center>Hangman 90's Videogame Edition</center>
+<br>
+<center>Can you remeber your childhood charachters?</center>
+
+	</div>
+	<div id="game2";>
+	<br>
+<center>Press any key to start</center>
+
+	</div>
+
+
+
+
+
+
+<style>
+body {
+	font-size: 24px;
+	line-height: 32px;
+	background-image: url("http://img12.deviantart.net/3808/i/2015/122/d/7/old_school_video_games_by_dancingcorpse1000-d2er7ky.jpg");
+	background-size:cover;
+	background-repeat: no-repeat;
+    border: transparent;
+}
+	#game{
+		background-image: url(https://farm3.staticflickr.com/2779/4030158041_bcf39106ce_o_d.jpg);
+	background-size:auto;
+		float: right;
+	margin-right: 250px;
+		width: 57%;
+		padding-left: 20px;
+		border-style: groove;
+	border-bottom: transparent;
+		font-family: 'gill sans';
+		color: white;
+		border-color: brown;
+	}
+	#game2{
+	font-family: 'gill sans';
+	background-image: url(https://farm3.staticflickr.com/2779/4030158041_bcf39106ce_o_d.jpg);
+	background-size:auto;
+	border-style: groove;
+	border-top: transparent;
+	float: right;
+	margin-right: 250px;
+	width: 57%;
+	height: 600px;
+	padding-top: 0px;
+	padding-left: 20px;
+	color: white;
+	border-color: brown;
+	}
+
+
+</style>
+
+<script language="javascript" type="text/javascript">
+var words = ["pikachu"] //, "mario", "luigi", "crash","sonic","cloud","snake","starfox","donkeykong","link","laracroft","samus","yoshi", "parappa","spyro","megaman","subzero","ryu","guile"];
+var random = words[Math.floor(Math.random() * words.length)];
+var splitWord = random.split("");
+var cLetters = [];
+var wLetters = [];
+var wins = 0;
+var chances = 8;
+var wordHTML = "";
+
+>>>>>>> f113008eecea9084383a16e54982b4483e766440
 document.onkeyup = function(event) {
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 	//debugger;
 	//console.log(userGuess)
 	//console.log(chances)
+<<<<<<< HEAD
 	// if (chances>0) {
 
+=======
+	//if (chances>0) {
+
+if (chances==0) {
+			alert("you lose")
+		};
+>>>>>>> f113008eecea9084383a16e54982b4483e766440
 	if (splitWord.indexOf(userGuess) > -1){
 		if (cLetters.indexOf(userGuess)==-1){
 			cLetters.push(userGuess)
 		}
+<<<<<<< HEAD
 		var wordHTML = "";
+=======
+>>>>>>> f113008eecea9084383a16e54982b4483e766440
 
 		for(var i=0; i < splitWord.length; i++){
 			for(var j=0; j <cLetters.length; j++){
 				if (splitWord[i] == cLetters[j]){
+<<<<<<< HEAD
 					wordHTML = wordHTML + " " + cLetters[j] + " ";
 				}else {
 					wordHTML = wordHTML + " _ ";
@@ -43,6 +133,35 @@ document.onkeyup = function(event) {
 	
 
 
+=======
+					wordHTML = wordHTML + "" + cLetters[j] + "";
+					console.log(wordHTML);
+				}else {
+					wordHTML = wordHTML + " _ ";
+					console.log(wordHTML);
+				}
+			}
+		}
+		
+
+	}else{
+		if (wLetters.indexOf(userGuess) == -1){
+			wLetters.push(userGuess)
+			chances--;
+		} 		
+	}
+
+		var uLetters =  cLetters+wLetters;
+		var html = 
+        "<p>Wins: " + 
+        wins + 
+        "</p>" +
+        "<p>Guesses Left " + 
+        chances + 
+        "</p>" + "<p>" + "Used Letters: " + uLetters + "</p>";
+		document.querySelector('#game2').innerHTML = html;
+		document.querySelector('#game').innerHTML = wordHTML;
+>>>>>>> f113008eecea9084383a16e54982b4483e766440
 		
 	}
 		// for(var i = 0; i < splitWord.length; i++){
@@ -86,6 +205,7 @@ document.onkeyup = function(event) {
 
 
 </script>
+<<<<<<< HEAD
 </head>
 
 <body>
@@ -163,5 +283,8 @@ Wrong Letters <input name = "wrongletters" type="text" size = "36">
 <input type="reset" value="Reset">
 </form>
 </head>-->
+=======
+
+>>>>>>> f113008eecea9084383a16e54982b4483e766440
 </body>
 

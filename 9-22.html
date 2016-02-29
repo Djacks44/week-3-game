@@ -1,0 +1,36 @@
+html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Passcode</title>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    </head>
+    <body>
+        <div id=""><h1>Passcode!</h1></div>
+
+        <div class="number" data-name="one"><h3>ONE</h3></div>
+        <div class="number" data-name="two"><h3>TWO</h3></div>
+        <div class="number" data-name="three"><h3>THREE</h3></div>
+        <div class="number" data-name="four"><h3>FOUR</h3></div>
+
+        <script type="text/javascript">
+            $( document). ready(function() {
+                    var userInput=[];
+                    var cS = ['one','two','two'];
+                $(".number").on('click',function(){
+                  
+                    userInput.push($(this).data('name'));
+
+                    for (var i = 0; i < userInput.length; i++) {
+                        if (userInput[i] == cS[i]) {
+                            alert('good');
+                        }else{
+                            alert('bad');
+                        }
+                   
+                    }
+
+                });
+            });
+        </script>
+    </body>
+</html>
